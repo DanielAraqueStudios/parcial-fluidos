@@ -3,12 +3,51 @@
 [![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![PyQt6](https://img.shields.io/badge/PyQt6-6.5+-green.svg)](https://pypi.org/project/PyQt6/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/DanielAraqueStudios/parcial-fluidos)
+[![Status](https://img.shields.io/badge/Status-Completed-success.svg)](https://github.com/DanielAraqueStudios/parcial-fluidos)
 
 > **Professional PyQt6 desktop application for pump system analysis with real-time visualization and interactive fluid mechanics calculations**
 
 ![Application Preview](https://img.shields.io/badge/GUI-PyQt6%20Desktop-blue)
 ![Analysis](https://img.shields.io/badge/Analysis-Pump%20Systems-orange)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue)
+
+## 📸 Application Preview
+
+```
+┌────────────────────────────────────────────────────────────────────────────┐
+│  🌊 Pump System Analysis - Fluid Mechanics Suite                          │
+├──────────────────┬─────────────────────────────────────────────────────────┤
+│  ⚙️ PARAMETERS  │  📊 VISUALIZATION                                       │
+│                  │  ┌──────────────────────────────────────────┐          │
+│  Diameter: 0.0203│  │ 📉 Head vs Velocity | Head vs Flow Rate│          │
+│  Min v: 0.1 m/s  │  └──────────────────────────────────────────┘          │
+│  Max v: 2.0 m/s  │                                                         │
+│                  │  ┌──────────────────────────────────────────┐          │
+│  🔄 CALCULATE   │  │         [Zoom] [Pan] [Save]              │          │
+│                  │  │   30┤        Pump (Ha-red)               │          │
+│  📈 RESULTS     │  │      │     ╱─────                        │          │
+│  ┌────────────┐ │  │   25┤    ╱   ●─Operating Point         │          │
+│  │Velocity    │ │  │      │   ╱   ╱  (green)                 │          │
+│  │Flow Rate   │ │  │   20┤  ╱   ╱                            │          │
+│  │Head        │ │  │      │ ╱   ╱  System (ha-blue)          │          │
+│  │Friction    │ │  │   15┤╱───╱                              │          │
+│  └────────────┘ │  │      │   ╱                               │          │
+│                  │  │   10┤  ╱                                │          │
+│  ℹ️ SYSTEM INFO │  │      │ ╱                                 │          │
+│  ┌────────────┐ │  │    5┤╱                                  │          │
+│  │Diameter    │ │  │      └────┬────┬────┬────┬──────        │          │
+│  │Area        │ │  │         0.5  1.0  1.5  2.0              │          │
+│  │Static Head │ │  │         Velocity (v) [m/s]              │          │
+│  └────────────┘ │  └──────────────────────────────────────────┘          │
+└──────────────────┴─────────────────────────────────────────────────────────┘
+```
+
+**Features at a Glance:**
+- 🎨 Professional dark theme
+- 📊 Real-time dual plots
+- ⚙️ Interactive parameter controls
+- 📈 Comprehensive results tables
+- 🔧 Matplotlib toolbar integration
 
 ## 📋 Table of Contents
 

@@ -769,35 +769,58 @@ sphinx          # Documentation generation
 
 ## 🤝 Contributing
 
-Contributions are welcome! This project is part of academic coursework but open for collaboration.
+Contributions are welcome! This project is part of academic coursework in **Fluid Mechanics** at **Universidad Militar Nueva Granada** but is open for collaboration and improvements.
 
 ### How to Contribute
 
 1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/AmazingFeature`
-3. **Commit your changes**: `git commit -m 'Add some AmazingFeature'`
-4. **Push to the branch**: `git push origin feature/AmazingFeature`
+2. **Create a feature branch**: `git checkout -b feature/EnhancedCalculation`
+3. **Commit your changes**: `git commit -m 'Add NPSH calculation feature'`
+4. **Push to the branch**: `git push origin feature/EnhancedCalculation`
 5. **Open a Pull Request**
 
 ### Coding Standards
 
-- Follow PEP 8 style guide
-- Write docstrings for all functions (NumPy format)
-- Include unit tests for new features
-- Update documentation as needed
+- **PEP 8**: Follow Python style guidelines
+- **Docstrings**: Use NumPy format for all functions
+- **Type Hints**: Include type annotations where applicable
+- **Testing**: Add tests for new features
+- **Documentation**: Update README and comments
 
 ### Areas for Contribution
 
-- 🐛 Bug fixes and validation
-- 📝 Documentation improvements
-- 🎨 UI/UX enhancements
-- 🧪 Additional test cases
-- 🌐 Internationalization
-- 📊 New visualization types
+- 🐛 **Bug Fixes**: Identify and fix calculation errors
+- 📝 **Documentation**: Improve explanations and examples
+- 🎨 **UI/UX**: Enhance interface design and usability
+- ✨ **New Features**: Add pump efficiency, NPSH, power calculations
+- 🧪 **Testing**: Write unit tests for backend methods
+- 🌐 **Internationalization**: Add Spanish language support
+- 📊 **Visualization**: Create new plot types and animations
+
+### Development Setup
+
+```powershell
+# Fork and clone
+git clone https://github.com/YOUR_USERNAME/parcial-fluidos.git
+cd parcial-fluidos
+
+# Create virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run application
+python app_gui.py
+
+# Run tests (when available)
+pytest tests/
+```
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ```
 MIT License
@@ -806,35 +829,130 @@ Copyright (c) 2025 Daniel Araque Studios
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 ## 👨‍💻 Author
 
 **Daniel Araque**
-- GitHub: [@DanielAraqueStudios](https://github.com/DanielAraqueStudios)
-- University: Universidad Militar Nueva Granada
-- Program: Mechatronics Engineering
-- Course: Fluid Mechanics - 6th Semester
+- **GitHub**: [@DanielAraqueStudios](https://github.com/DanielAraqueStudios)
+- **Repository**: [parcial-fluidos](https://github.com/DanielAraqueStudios/parcial-fluidos)
+- **Institution**: Universidad Militar Nueva Granada
+- **Program**: Mechatronics Engineering
+- **Course**: Fluid Mechanics (6th Semester)
+- **Academic Year**: 2025
+
+### Project Context
+
+This application was developed as part of the **Fluid Mechanics** course assessment ("parcial"), demonstrating:
+- Advanced Python programming skills
+- GUI development with PyQt6
+- Numerical methods for engineering problems
+- Professional software engineering practices
+- Understanding of pump system analysis and hydraulics
 
 ## 🙏 Acknowledgments
 
-- **Universidad Militar Nueva Granada** - Academic institution
-- **Fluid Mechanics Course Instructors** - Theoretical foundation
-- **Open Source Community** - Libraries and tools
-- **Python Scientific Computing Community** - NumPy, SciPy, Matplotlib teams
+- **Universidad Militar Nueva Granada** - Academic institution and coursework foundation
+- **Fluid Mechanics Instructors** - Theoretical knowledge and guidance
+- **Python Community** - NumPy, SciPy, Matplotlib, and PyQt6 development teams
+- **Open Source Contributors** - Making powerful tools freely available
+- **Stack Overflow Community** - Problem-solving and best practices
 
-## 📞 Support
+### Technologies Used
 
-For questions, issues, or suggestions:
+Special thanks to the developers and maintainers of:
+- **Python** - Guido van Rossum and Python Software Foundation
+- **NumPy** - Travis Oliphant and contributors
+- **SciPy** - Scientific Python community
+- **Matplotlib** - John Hunter and the Matplotlib team
+- **PyQt6** - Riverbank Computing and Qt Company
 
-- 🐛 [Open an Issue](https://github.com/DanielAraqueStudios/parcial-fluidos/issues)
-- 💬 [Start a Discussion](https://github.com/DanielAraqueStudios/parcial-fluidos/discussions)
-- 📧 Contact via GitHub
+## 📞 Support & Contact
+
+### For Questions or Issues
+
+- 🐛 **Bug Reports**: [Open an Issue](https://github.com/DanielAraqueStudios/parcial-fluidos/issues)
+- 💡 **Feature Requests**: [Create a Feature Request](https://github.com/DanielAraqueStudios/parcial-fluidos/issues/new)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/DanielAraqueStudios/parcial-fluidos/discussions)
+- 📧 **Email**: Contact via GitHub profile
+
+### Getting Help
+
+**Documentation:**
+- `README.md` - This comprehensive guide
+- `QUICKSTART.md` - Quick start and usage instructions
+- `UI_DESIGN.md` - UI/UX design documentation
+- `PROJECT_COMPLETE.md` - Implementation summary
+
+**Code Comments:**
+- Detailed docstrings in all Python files
+- Inline comments explaining complex calculations
+- Type hints for function parameters
 
 ## 📊 Project Status
 
-![Status](https://img.shields.io/badge/Status-Active%20Development-brightgreen)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue)
+![Python](https://img.shields.io/badge/Python-3.13+-blue)
+![PyQt6](https://img.shields.io/badge/PyQt6-6.5+-green)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+### Current Version: 1.0.0
+
+**Release Date**: November 14, 2025
+
+**Features:**
+- ✅ Complete PyQt6 desktop application
+- ✅ Professional dark theme UI
+- ✅ Operating point calculation
+- ✅ Dual visualization (velocity & flow rate)
+- ✅ Interactive Matplotlib integration
+- ✅ Comprehensive documentation
+
+### Statistics
+
+- **Lines of Code**: ~1,200+ (backend + frontend)
+- **Documentation Pages**: 4 (README, QUICKSTART, UI_DESIGN, PROJECT_COMPLETE)
+- **Dependencies**: 4 core packages (NumPy, SciPy, Matplotlib, PyQt6)
+- **Calculation Accuracy**: Double-precision floating-point
+- **Plot Resolution**: 500 points per curve
+
+---
+
+<div align="center">
+
+## 🌊 **Pump System Analysis Suite** 🌊
+
+### Professional Fluid Mechanics Application
+
+**⭐ Star this repository if you find it helpful! ⭐**
+
+Made with ❤️ and ☕ for **Fluid Mechanics Engineering**
+
+**[Download](https://github.com/DanielAraqueStudios/parcial-fluidos)** • **[Documentation](README.md)** • **[Quick Start](QUICKSTART.md)** • **[Report Issue](https://github.com/DanielAraqueStudios/parcial-fluidos/issues)**
+
+---
+
+**Universidad Militar Nueva Granada**  
+Mechatronics Engineering Program  
+Fluid Mechanics Course - 2025
+
+</div>
 ![Build](https://img.shields.io/badge/Build-Passing-success)
 ![Coverage](https://img.shields.io/badge/Coverage-85%25-yellowgreen)
 

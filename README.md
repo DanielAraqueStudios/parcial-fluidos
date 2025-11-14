@@ -1,10 +1,14 @@
-# 🌊 Fluid Mechanics Analysis Suite
+# 🌊 Pump System Analysis Suite
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
+[![PyQt6](https://img.shields.io/badge/PyQt6-6.5+-green.svg)](https://pypi.org/project/PyQt6/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/DanielAraqueStudios/parcial-fluidos)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/DanielAraqueStudios/parcial-fluidos)
 
-> **Advanced computational fluid dynamics toolkit for engineering analysis, simulation, and visualization**
+> **Professional PyQt6 desktop application for pump system analysis with real-time visualization and interactive fluid mechanics calculations**
+
+![Application Preview](https://img.shields.io/badge/GUI-PyQt6%20Desktop-blue)
+![Analysis](https://img.shields.io/badge/Analysis-Pump%20Systems-orange)
 
 ## 📋 Table of Contents
 
@@ -21,115 +25,121 @@
 
 ## 🎯 Overview
 
-**Fluid Mechanics Analysis Suite** is a comprehensive Python-based application designed for fluid mechanics engineers, students, and researchers. This toolkit provides robust computational engines for solving complex fluid dynamics problems, coupled with interactive visualization interfaces for real-time analysis and exploration.
+**Pump System Analysis Suite** is a professional-grade desktop application built with **PyQt6** for comprehensive pump and piping system analysis. Designed for fluid mechanics engineers, students, and researchers, this application provides robust computational engines coupled with an intuitive graphical interface for real-time analysis and visualization of pump operating points.
 
 ### Purpose
 
-This application was developed as part of advanced fluid mechanics coursework in the Mechatronics Engineering program, focusing on:
+This application was developed as part of advanced fluid mechanics coursework (6th Semester) in the **Mechatronics Engineering** program at **Universidad Militar Nueva Granada**, focusing on:
 
-- **Practical engineering calculations** for real-world fluid systems
-- **Numerical simulation** of flow phenomena
-- **Educational visualization** of fluid behavior
-- **Professional-grade analysis tools** for design and validation
+- **Pump Operating Point Determination**: Find where system curves intersect pump curves
+- **Real-time Visualization**: Interactive plots with dark professional theme
+- **System Analysis**: Complete friction factor, Reynolds number, and head calculations
+- **Educational Tool**: Understand pump-system interactions through visual feedback
+- **Professional UI/UX**: Desktop application with modern, engineering-focused design
 
-### Key Capabilities
+### 🎨 Key Capabilities
 
-- ✅ **Pipe Flow Analysis**: Complete friction loss, pressure drop, and flow rate calculations
-- ✅ **Pump System Design**: Performance curves, NPSH, power requirements, and system matching
-- ✅ **Open Channel Flow**: Manning equation, hydraulic radius, critical depth analysis
-- ✅ **Fluid Properties**: Dynamic property calculations for water, air, and custom fluids
-- ✅ **Reynolds Number**: Flow regime identification (laminar, transitional, turbulent)
-- ✅ **Interactive Visualization**: Real-time plotting of velocity profiles, pressure distributions
-- ✅ **Data Export**: Results generation in CSV, PDF, and engineering report formats
+- ✅ **Professional PyQt6 GUI**: Modern dark-themed desktop interface with resizable panels
+- ✅ **Operating Point Calculator**: Numerical solver finds exact pump-system intersection
+- ✅ **Dual Visualization**: Head vs Velocity and Head vs Flow Rate plots
+- ✅ **Interactive Matplotlib**: Embedded charts with zoom, pan, and export tools
+- ✅ **System Curve Analysis**: Darcy-Weisbach friction with Colebrook-White equation
+- ✅ **Pump Characteristic Curve**: Parabolic head-flow relationship modeling
+- ✅ **Complete Results Display**: Formatted tables showing all parameters and calculations
+- ✅ **Real-time Updates**: Modify parameters and recalculate instantly
 
 ## 🚀 Features
 
-### Backend Computational Engine
+### 🎨 Professional PyQt6 Desktop Interface
 
-#### 1. **Fluid Property Calculations**
+#### **Main Window Layout**
+- **Split Panel Design**: Resizable left control panel (30%) and right visualization panel (70%)
+- **Dark Theme**: Professional engineering-focused color scheme (#1e1e1e background)
+- **Modern Styling**: Rounded corners, blue accents (#3498db), smooth hover effects
+- **Responsive Layout**: Adjustable splitter for custom workspace arrangement
+
+#### **Left Control Panel**
+1. **⚙️ Input Parameters Group**
+   - Pipe diameter (m) with validation
+   - Velocity range (min/max) controls
+   - Clean, labeled input fields
+
+2. **🔄 Calculate Button**
+   - Large, prominent blue button
+   - One-click operating point calculation
+   - Hover and pressed states
+
+3. **📈 Operating Point Results Table**
+   - Velocity (m/s)
+   - Flow rate (m³/s and L/s)
+   - Operating head (m)
+   - Pump head verification (m)
+   - Friction factor
+   - Reynolds number (partial)
+   - Head difference (convergence check)
+
+4. **ℹ️ System Information Table**
+   - Pipe diameter and area
+   - Static head
+   - Pump maximum head
+   - Roughness factor
+
+#### **Right Visualization Panel**
+1. **📉 Tabbed Plot Interface**
+   - **Tab 1**: Head vs Velocity plot
+   - **Tab 2**: Head vs Flow Rate plot
+   - Easy switching between views
+
+2. **🎨 Professional Matplotlib Plots**
+   - **Blue Curve**: System Required Head (ha) - Darcy-Weisbach losses
+   - **Red Curve**: Pump Available Head (Ha) - Pump characteristic
+   - **Green Dot**: Operating Point with annotation
+   - **Crosshairs**: Visual guides at intersection
+   - **Dark Background**: Professional theme matching UI
+
+3. **🛠️ Interactive Toolbar**
+   - Zoom rectangle tool
+   - Pan navigation
+   - Home (reset view)
+   - Save figure (PNG/PDF/SVG)
+
+### 🧮 Backend Computational Engine
+
+#### **PumpSystemAnalyzer Class**
+
+**Core Calculations:**
 ```python
-# Dynamic viscosity, density, kinematic viscosity
-# Temperature-dependent property evaluation
-# Support for water, air, oils, and custom fluids
+✅ calculate_friction_factor(velocity)    # Colebrook-White equation
+✅ calculate_system_head(velocity)        # ha = H_static + H_friction
+✅ calculate_pump_head(velocity)          # Ha pump characteristic
+✅ find_operating_point()                 # SciPy fsolve intersection
+✅ generate_curves()                      # Full curve arrays
+✅ analyze_complete_system()              # Complete analysis
 ```
 
-**Capabilities:**
-- Temperature-dependent fluid properties
-- Viscosity calculations using Sutherland's law
-- Density corrections for pressure and temperature
-- Surface tension and vapor pressure evaluation
+**Analysis Features:**
+- **Friction Factor**: Modified Colebrook-White equation for turbulent flow
+- **System Curve**: Static head + velocity-dependent friction losses
+- **Pump Curve**: Parabolic head-flow characteristic
+- **Operating Point**: Numerical root finding (ha = Ha)
+- **Reynolds Number**: Partial calculation for flow regime identification
+- **Flow Rate**: Volumetric calculation from velocity and area
 
-#### 2. **Flow Analysis Modules**
+#### **Numerical Methods**
+- **Root Finding**: SciPy `fsolve` for operating point
+- **Convergence**: Automatic tolerance and iteration control
+- **Stability**: Validated initial guess ensures convergence
+- **Accuracy**: Double-precision floating-point calculations
 
-**Pipe Flow:**
-- Darcy-Weisbach friction factor calculation
-- Hazen-Williams coefficient application
-- Minor loss calculations (fittings, valves, expansions)
-- Pressure drop analysis for complex piping networks
-- Moody diagram implementation
+### 📊 Visualization Features
 
-**Reynolds Number & Flow Regimes:**
-```
-Re < 2300        → Laminar Flow
-2300 < Re < 4000 → Transitional Flow
-Re > 4000        → Turbulent Flow
-```
-
-**Open Channel Flow:**
-- Manning equation for uniform flow
-- Hydraulic radius and wetted perimeter
-- Normal depth and critical depth calculations
-- Froude number evaluation
-- Channel geometry optimization
-
-**Pump Systems:**
-- Pump curve modeling (head-flow relationships)
-- System curve generation
-- Operating point determination
-- NPSH (Net Positive Suction Head) calculations
-- Pump efficiency and power requirements
-- Cavitation risk assessment
-
-#### 3. **Numerical Solvers**
-
-- **Iterative Methods**: Newton-Raphson, fixed-point iteration
-- **Differential Equations**: Runge-Kutta methods for transient analysis
-- **Linear Systems**: Gaussian elimination, LU decomposition for network analysis
-- **Convergence Control**: Adaptive tolerance and iteration limits
-
-### Frontend Interface
-
-#### Interactive Web Dashboard (Streamlit)
-- **Real-time Parameter Input**: Sliders, number inputs with unit conversion
-- **Live Calculations**: Instant results as parameters change
-- **Dynamic Visualization**: Matplotlib/Plotly interactive charts
-- **Multi-page Navigation**: Organized by analysis type
-- **Results Export**: Download calculations as CSV or PDF
-
-#### Desktop Application (PyQt6)
-- **Professional UI**: Engineering-themed dark/light modes
-- **Tabbed Interface**: Separate modules for each analysis type
-- **Parameter Tables**: Editable grids for complex inputs
-- **Plot Canvas**: Embedded Matplotlib with zoom/pan tools
-- **Report Generation**: Formatted engineering reports
-
-### Visualization Components
-
-```python
-# Streamline plots
-# Velocity vector fields
-# Pressure contour maps
-# Flow regime diagrams
-# Pump characteristic curves
-# System performance plots
-```
-
-**Visualization Features:**
-- Publication-quality figures (300 DPI export)
-- Interactive tooltips and data exploration
-- Animation for transient flow
-- 3D surface plots for complex geometries
-- Customizable color schemes and scales
+**Plot Characteristics:**
+- **Resolution**: 500 points per curve for smooth lines
+- **Annotation**: Yellow box highlighting operating point values
+- **Grid**: White dashed grid with 20% opacity
+- **Legend**: Color-coded curve identification
+- **Axes**: Labeled with units [m/s], [m³/s], [m]
+- **Professional**: Publication-ready quality
 
 ## 📦 Installation
 

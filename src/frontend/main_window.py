@@ -70,9 +70,9 @@ class MatplotlibCanvas(FigureCanvas):
             annotation_pos = (x_op + 0.00005, operating_point["head"] + 2)
         
         # Plot curves
-        ax.plot(x_data, curves_data['system_head'], 'b-', linewidth=2.5, 
+        ax.plot(x_data, curves_data['system_head'], linewidth=2.5, 
                 label='ha (System Required Curve)', color='#3498db')
-        ax.plot(x_data, curves_data['pump_head'], 'r-', linewidth=2.5, 
+        ax.plot(x_data, curves_data['pump_head'], linewidth=2.5, 
                 label='Ha (Pump Available Head)', color='#e74c3c')
         
         # Plot operating point

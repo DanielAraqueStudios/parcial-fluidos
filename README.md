@@ -150,67 +150,61 @@ Python 3.8 or higher
 pip (Python package manager)
 ```
 
-### Option 1: Quick Start (Streamlit)
+## 📦 Installation
 
-```bash
-# Clone the repository
+### Prerequisites
+
+- **Python 3.13+** (or Python 3.8+)
+- **pip** (Python package manager)
+- **Virtual environment** (recommended)
+
+### Quick Start Installation
+
+```powershell
+# 1. Clone the repository
 git clone https://github.com/DanielAraqueStudios/parcial-fluidos.git
 cd parcial-fluidos
 
-# Create virtual environment
-python -m venv venv
+# 2. Create virtual environment (automatically created if using Python extension)
+python -m venv .venv
 
-# Activate virtual environment
-# Windows (PowerShell)
-.\venv\Scripts\Activate.ps1
-# Windows (CMD)
-.\venv\Scripts\activate.bat
-# Linux/Mac
-source venv/bin/activate
+# 3. Activate virtual environment
+# Windows PowerShell:
+.\.venv\Scripts\Activate.ps1
 
-# Install dependencies
+# 4. Install dependencies
 pip install -r requirements.txt
 
-# Run the application
-streamlit run app.py
-```
-
-### Option 2: Desktop Application (PyQt6)
-
-```bash
-# After cloning and activating virtual environment
-pip install -r requirements-desktop.txt
-
-# Run desktop application
-python main_desktop.py
+# 5. Run the PyQt6 application
+python app_gui.py
 ```
 
 ### Dependencies
 
-**Core Computational:**
+The application requires the following packages:
+
 ```
-numpy>=1.24.0
-scipy>=1.10.0
-pandas>=2.0.0
+numpy>=1.24.0          # Numerical computing
+scipy>=1.10.0          # Scientific computing (fsolve)
+matplotlib>=3.7.0      # Plotting and visualization
+PyQt6>=6.5.0           # Desktop GUI framework
 ```
 
-**Visualization:**
-```
-matplotlib>=3.7.0
-plotly>=5.14.0
-seaborn>=0.12.0
-```
+All dependencies are automatically installed via `requirements.txt`.
 
-**Frontend:**
-```
-streamlit>=1.28.0          # Web interface
-PyQt6>=6.5.0               # Desktop interface (optional)
-```
+### Verification
 
-**Additional:**
-```
-openpyxl>=3.1.0           # Excel export
-reportlab>=4.0.0          # PDF generation
+After installation, verify everything works:
+
+```powershell
+# Check Python version
+python --version
+
+# Check installed packages
+pip list
+
+# Run the application
+python app_gui.py
 ```
 
 ## 📁 Project Structure
@@ -218,36 +212,49 @@ reportlab>=4.0.0          # PDF generation
 ```
 parcial-fluidos/
 │
-├── app.py                          # Main Streamlit application entry point
-├── main_desktop.py                 # PyQt6 desktop application launcher
-├── requirements.txt                # Python dependencies (web version)
-├── requirements-desktop.txt        # Python dependencies (desktop version)
-├── README.md                       # This file
+├── app_gui.py                      # 👈 MAIN LAUNCHER - PyQt6 Application
+├── main.py                         # Original console-based script
+├── requirements.txt                # Python dependencies
+├── README.md                       # This documentation
+├── QUICKSTART.md                   # Quick start guide
+├── UI_DESIGN.md                    # UI/UX design documentation
+├── PROJECT_COMPLETE.md             # Implementation summary
 │
-├── src/                           # Source code directory
-│   ├── __init__.py
-│   │
-│   ├── backend/                   # Computational engine
-│   │   ├── __init__.py
-│   │   ├── fluid_properties.py    # Fluid property calculations
-│   │   ├── pipe_flow.py           # Pipe flow analysis
-│   │   ├── pump_systems.py        # Pump calculations
-│   │   ├── open_channel.py        # Open channel flow
-│   │   ├── reynolds.py            # Reynolds number and flow regimes
-│   │   ├── friction.py            # Friction factor calculations
-│   │   └── numerical_solvers.py   # Numerical methods
-│   │
-│   ├── frontend/                  # User interface components
-│   │   ├── __init__.py
-│   │   ├── streamlit_app/         # Streamlit web interface
-│   │   │   ├── __init__.py
-│   │   │   ├── home.py            # Landing page
-│   │   │   ├── pipe_flow_page.py  # Pipe flow interface
-│   │   │   ├── pump_page.py       # Pump analysis interface
-│   │   │   └── channel_page.py    # Open channel interface
-│   │   │
-│   │   └── pyqt_app/              # PyQt6 desktop interface
-│   │       ├── __init__.py
+├── .venv/                         # Virtual environment (auto-generated)
+│
+└── src/                           # Source code directory
+    ├── __init__.py
+    │
+    ├── backend/                   # Computational engine
+    │   ├── __init__.py
+    │   └── pump_system.py         # PumpSystemAnalyzer class
+    │                              # - Friction factor calculations
+    │                              # - System curve (ha)
+    │                              # - Pump curve (Ha)
+    │                              # - Operating point solver
+    │                              # - Complete analysis methods
+    │
+    └── frontend/                  # PyQt6 User Interface
+        ├── __init__.py
+        └── main_window.py         # PumpSystemWindow class
+                                   # - Main application window
+                                   # - Input controls
+                                   # - Results tables
+                                   # - Matplotlib canvas integration
+                                   # - Dark theme styling
+```
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `app_gui.py` | **Main launcher** - Run this to start the application |
+| `main.py` | Original console script (legacy) |
+| `src/backend/pump_system.py` | Core calculation engine |
+| `src/frontend/main_window.py` | PyQt6 GUI implementation |
+| `requirements.txt` | Package dependencies |
+| `QUICKSTART.md` | Quick start and usage guide |
+| `UI_DESIGN.md` | Detailed UI/UX documentation |
 │   │       ├── main_window.py     # Main application window
 │   │       ├── widgets/           # Custom widgets
 │   │       └── dialogs/           # Dialog windows
@@ -294,114 +301,237 @@ parcial-fluidos/
 
 ## 💡 Usage Examples
 
-### Example 1: Pipe Flow Pressure Drop
+### Running the Application
+
+**Launch the PyQt6 GUI:**
+```powershell
+# Navigate to project directory
+cd parcial-fluidos
+
+# Run the application
+python app_gui.py
+```
+
+The application window opens with:
+- Default pipe diameter: 0.0203 m
+- Velocity range: 0.1 - 2.0 m/s
+- Automatic calculation of operating point
+- Two plot tabs showing results
+
+### Using the Interface
+
+**1. View Default Results**
+- Application calculates automatically on startup
+- Check "Operating Point Results" table for key values
+- Switch between plot tabs to see different visualizations
+
+**2. Modify Parameters**
+```
+Input Parameters:
+├── Pipe Diameter: Change to analyze different pipe sizes
+├── Min Velocity: Adjust plot range lower bound
+└── Max Velocity: Adjust plot range upper bound
+```
+
+**3. Recalculate**
+- Click "🔄 CALCULATE OPERATING POINT" button
+- All tables and plots update instantly
+- Operating point recalculated automatically
+
+**4. Explore Visualizations**
+- Use toolbar to zoom into regions of interest
+- Pan across the plot to examine curve behavior
+- Save plots as PNG/PDF for reports
+
+### Backend Usage (Python Script)
+
+**Example 1: Basic Operating Point Calculation**
 
 ```python
-from src.backend.pipe_flow import PipeFlow
-from src.backend.fluid_properties import Water
+from src.backend.pump_system import PumpSystemAnalyzer
 
-# Define system
-water = Water(temperature=20)  # 20°C water
-pipe = PipeFlow(
-    diameter=0.1,        # 100 mm diameter
-    length=100,          # 100 m length
-    roughness=0.045,     # Steel pipe (mm)
-    flow_rate=0.02       # 20 L/s
-)
+# Create analyzer with default 0.0203 m diameter
+analyzer = PumpSystemAnalyzer(diameter=0.0203)
 
-# Calculate pressure drop
-results = pipe.calculate_pressure_drop(water)
+# Find operating point
+operating_point = analyzer.find_operating_point()
 
-print(f"Reynolds Number: {results['reynolds']:.0f}")
-print(f"Flow Regime: {results['regime']}")
-print(f"Friction Factor: {results['friction_factor']:.4f}")
-print(f"Pressure Drop: {results['pressure_drop']:.2f} kPa")
-print(f"Head Loss: {results['head_loss']:.2f} m")
+if operating_point['success']:
+    print(f"Velocity: {operating_point['velocity']:.4f} m/s")
+    print(f"Flow Rate: {operating_point['flow_rate_ls']:.4f} L/s")
+    print(f"Operating Head: {operating_point['head']:.4f} m")
+    print(f"Friction Factor: {operating_point['friction_factor']:.6f}")
 ```
 
-### Example 2: Pump System Analysis
+**Example 2: Generate Complete Analysis**
 
 ```python
-from src.backend.pump_systems import PumpSystem
-from src.backend.fluid_properties import Water
+from src.backend.pump_system import PumpSystemAnalyzer
 
-# Define pump and system
-water = Water(temperature=25)
-pump = PumpSystem(
-    flow_rate_design=50,      # L/s
-    head_design=40,           # m
-    efficiency=0.75           # 75% efficient
+# Create analyzer
+analyzer = PumpSystemAnalyzer(diameter=0.0203)
+
+# Perform complete analysis
+analysis = analyzer.analyze_complete_system(
+    v_min=0.1,
+    v_max=2.0,
+    num_points=500
 )
 
-# Calculate operating point
-results = pump.analyze_system(
-    static_head=20,           # m
-    pipe_length=200,          # m
-    pipe_diameter=0.15,       # m
-    flow_rate=45              # L/s
-)
+# Access results
+curves = analysis['curves']
+operating_point = analysis['operating_point']
+system_info = analysis['system_info']
 
-print(f"Operating Head: {results['operating_head']:.2f} m")
-print(f"Power Required: {results['power_kw']:.2f} kW")
-print(f"NPSH Available: {results['npsh_available']:.2f} m")
-print(f"Cavitation Risk: {results['cavitation_risk']}")
+print(f"Operating velocity: {operating_point['velocity']:.4f} m/s")
+print(f"System area: {system_info['area']:.6f} m²")
+print(f"Number of curve points: {len(curves['velocities'])}")
 ```
 
-### Example 3: Open Channel Flow
+**Example 3: Custom Pipe Diameter Analysis**
 
 ```python
-from src.backend.open_channel import RectangularChannel
+from src.backend.pump_system import PumpSystemAnalyzer
 
-# Define channel
-channel = RectangularChannel(
-    width=2.0,               # 2 m wide
-    slope=0.001,             # 0.1% slope
-    manning_n=0.013,         # Smooth concrete
-    discharge=3.5            # 3.5 m³/s
-)
+# Analyze different pipe sizes
+diameters = [0.015, 0.0203, 0.025, 0.030]  # meters
 
-# Calculate normal depth
-results = channel.calculate_normal_depth()
-
-print(f"Normal Depth: {results['depth']:.3f} m")
-print(f"Velocity: {results['velocity']:.2f} m/s")
-print(f"Froude Number: {results['froude']:.3f}")
-print(f"Flow Type: {results['flow_type']}")  # Subcritical/Supercritical
+for d in diameters:
+    analyzer = PumpSystemAnalyzer(diameter=d)
+    op = analyzer.find_operating_point()
+    
+    if op['success']:
+        print(f"\nDiameter: {d*1000:.1f} mm")
+        print(f"  Velocity: {op['velocity']:.4f} m/s")
+        print(f"  Flow Rate: {op['flow_rate_ls']:.4f} L/s")
+        print(f"  Head: {op['head']:.4f} m")
 ```
 
-### Example 4: Running Web Interface
+**Example 4: Plotting System Curves**
 
-```bash
-# Start Streamlit application
-streamlit run app.py
+```python
+from src.backend.pump_system import PumpSystemAnalyzer
+import matplotlib.pyplot as plt
 
-# Application opens at: http://localhost:8501
+# Generate curves
+analyzer = PumpSystemAnalyzer(diameter=0.0203)
+curves = analyzer.generate_curves(v_min=0.1, v_max=2.0, num_points=500)
+op = analyzer.find_operating_point()
+
+# Create plot
+plt.figure(figsize=(10, 6))
+plt.plot(curves['velocities'], curves['system_head'], 'b-', label='System (ha)', linewidth=2)
+plt.plot(curves['velocities'], curves['pump_head'], 'r-', label='Pump (Ha)', linewidth=2)
+plt.plot(op['velocity'], op['head'], 'go', markersize=10, label='Operating Point')
+
+plt.xlabel('Velocity (m/s)')
+plt.ylabel('Head (m)')
+plt.title('Pump System Analysis')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
 ```
-
-**Interface workflow:**
-1. Select analysis type from sidebar
-2. Input parameters (diameter, flow rate, temperature, etc.)
-3. View real-time calculations
-4. Explore interactive plots
-5. Export results to CSV/PDF
 
 ## 📚 Theoretical Background
 
-### Fundamental Equations
+### System Equations Implemented
 
-#### Continuity Equation (Conservation of Mass)
-```
-∂ρ/∂t + ∇·(ρV) = 0
+#### **System Head (ha) - System Resistance Curve**
 
-For incompressible flow: ∇·V = 0
-```
+The system required head represents the total head needed to overcome static head and friction losses:
 
-#### Navier-Stokes Equations (Conservation of Momentum)
 ```
-ρ(∂V/∂t + V·∇V) = -∇p + μ∇²V + ρg
+ha = H_static + H_friction
+
+ha = 7.85 + (8694.6 × F + 23.65) × (v² / 19.62)
 ```
 
-#### Bernoulli Equation (Energy Conservation)
+Where:
+- `H_static = 7.85 m` - Static head (elevation difference)
+- `F` - Darcy friction factor (dimensionless)
+- `v` - Flow velocity (m/s)
+- `19.62 = 2g` - Twice gravitational acceleration
+
+**Components:**
+1. **Static Head (7.85 m)**: Constant elevation head required
+2. **Dynamic Loss Term**: Velocity-dependent friction losses
+   - `8694.6 × F` - Major losses (pipe friction)
+   - `23.65` - Minor losses (fittings, valves, etc.)
+
+#### **Pump Head (Ha) - Pump Characteristic Curve**
+
+The pump available head follows a typical parabolic characteristic:
+
+```
+Ha = H_max - C × Q²
+
+Ha = 24.4 - 0.0678 × (19.42 × v)²
+```
+
+Where:
+- `H_max = 24.4 m` - Maximum shutoff head (Q = 0)
+- `C = 0.0678` - Pump coefficient
+- `19.42 × v` - Velocity to flow rate conversion factor
+- `v` - Flow velocity (m/s)
+
+**Characteristics:**
+- Maximum head at zero flow: 24.4 m
+- Parabolic decrease with increasing flow
+- Typical centrifugal pump behavior
+
+#### **Friction Factor (F) - Colebrook-White Equation**
+
+Modified Colebrook-White equation for turbulent flow:
+
+```
+F = 0.25 / [log₁₀(ε/(3.7D) + 5.74/Re^0.9)]²
+
+Implemented as:
+F = 0.25 / [log₁₀(1/(3.7×81.2) + 5.74/(22706.9×v)^0.9)]²
+```
+
+Where:
+- `ε` - Absolute roughness
+- `D` - Pipe diameter
+- `Re = ρVD/μ` - Reynolds number
+- `81.2 = 3.7D/ε` - Roughness factor
+- `22706.9 × v` - Partial Reynolds number
+
+#### **Operating Point Determination**
+
+The operating point is found where system curve equals pump curve:
+
+```
+ha = Ha
+
+System Required = Pump Available
+```
+
+**Numerical Solution:**
+- Uses SciPy's `fsolve` function
+- Solves: `Ha(v) - ha(v) = 0`
+- Initial guess: `v = 0.5 m/s`
+- Converges to exact intersection point
+
+#### **Flow Rate Calculation**
+
+Volumetric flow rate from continuity equation:
+
+```
+Q = V × A
+
+Q = v × π × (D/2)²
+```
+
+Where:
+- `Q` - Flow rate (m³/s)
+- `v` - Velocity (m/s)
+- `A = π(D/2)²` - Pipe cross-sectional area
+- `D = 0.0203 m` - Pipe diameter (default)
+
+### Physical Principles
+
+#### **Bernoulli Equation (Energy Conservation)**
 ```
 p₁/ρg + V₁²/2g + z₁ = p₂/ρg + V₂²/2g + z₂ + hL
 
@@ -412,29 +542,104 @@ where:
 - hL = head loss
 ```
 
-#### Darcy-Weisbach Equation (Pressure Drop)
+#### **Darcy-Weisbach Equation (Head Loss)**
 ```
-hL = f · (L/D) · (V²/2g)
+hL = f × (L/D) × (V²/2g)
 
 where:
 - f = Darcy friction factor
 - L = pipe length
 - D = pipe diameter
 - V = flow velocity
+- g = gravitational acceleration
 ```
 
-#### Colebrook-White Equation (Friction Factor)
-```
-1/√f = -2log₁₀(ε/3.7D + 2.51/(Re√f))
+### Reynolds Number
 
-where:
-- ε = absolute roughness
-- Re = Reynolds number
+```
+Re = ρVD/μ = VD/ν
+
+Flow Classification:
+- Re < 2300: Laminar (viscous forces dominate)
+- 2300 < Re < 4000: Transitional (unstable)
+- Re > 4000: Turbulent (inertial forces dominate)
 ```
 
-#### Manning Equation (Open Channel Flow)
+**In this application:**
+- Partial Reynolds: `22706.9 × v`
+- Used for friction factor calculation
+- Indicates turbulent flow regime
+
+### Pump System Matching
+
+**Key Concept:**
+The pump must provide exactly the head required by the system at the flow rate where the two curves intersect.
+
+**At Operating Point:**
+- System receives required head
+- Pump operates efficiently
+- Stable operation guaranteed
+- Flow rate determined automatically
+
+**System Curve Shape:**
+- Increases with flow rate squared
+- Static head + velocity-dependent losses
+- Represents energy demand
+
+**Pump Curve Shape:**
+- Decreases with flow rate
+- Maximum at shutoff
+- Represents energy supply
+## 🛠 Technologies
+
+### Core Technologies
+
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| **Python** | 3.13+ (3.8+) | Core programming language |
+| **NumPy** | 1.24+ | Numerical arrays, mathematical operations |
+| **SciPy** | 1.10+ | Scientific computing, numerical solvers (fsolve) |
+| **Matplotlib** | 3.7+ | Data visualization, plotting |
+| **PyQt6** | 6.5+ | Desktop GUI framework |
+
+### Application Architecture
+
 ```
-Q = (1/n) · A · R^(2/3) · S^(1/2)
+┌─────────────────────────────────────────┐
+│         PyQt6 Frontend Layer            │
+│  ┌───────────────────────────────────┐  │
+│  │   Main Window (QMainWindow)       │  │
+│  │   ├── Input Controls (QLineEdit) │  │
+│  │   ├── Calculate Button (QPush)   │  │
+│  │   ├── Results Tables (QTable)    │  │
+│  │   └── Plot Tabs (QTabWidget)     │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘
+              ↕ (calls methods)
+┌─────────────────────────────────────────┐
+│       Backend Calculation Layer         │
+│  ┌───────────────────────────────────┐  │
+│  │   PumpSystemAnalyzer Class        │  │
+│  │   ├── calculate_friction_factor() │  │
+│  │   ├── calculate_system_head()    │  │
+│  │   ├── calculate_pump_head()      │  │
+│  │   ├── find_operating_point()     │  │
+│  │   └── generate_curves()          │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘
+              ↕ (uses libraries)
+┌─────────────────────────────────────────┐
+│     Scientific Computing Libraries      │
+│   NumPy | SciPy | Matplotlib            │
+└─────────────────────────────────────────┘
+```
+
+### Design Patterns
+
+- **MVC Pattern**: Separation of Model (backend), View (PyQt6), Controller (events)
+- **Object-Oriented**: Analyzer class encapsulates all calculations
+- **Modular Design**: Independent backend can be used without GUI
+- **Event-Driven**: GUI responds to user interactions
 
 where:
 - n = Manning roughness coefficient
@@ -516,33 +721,48 @@ sphinx          # Documentation generation
 
 ## 🗺 Roadmap
 
-### Phase 1: Core Functionality ✅
-- [x] Basic pipe flow calculations
-- [x] Fluid property database
-- [x] Reynolds number analysis
-- [x] Simple Streamlit interface
+### Phase 1: Core Application ✅ COMPLETE
+- [✅] Professional PyQt6 desktop interface
+- [✅] Backend calculation engine (PumpSystemAnalyzer)
+- [✅] Operating point solver with SciPy
+- [✅] Dual visualization (velocity & flow rate plots)
+- [✅] Dark theme with modern styling
+- [✅] Interactive Matplotlib integration
+- [✅] Complete documentation
 
-### Phase 2: Advanced Analysis 🚧
-- [ ] Complete pump system module
-- [ ] Open channel flow calculations
+### Phase 2: Enhanced Features 📋 PLANNED
+- [ ] Export results to CSV/Excel
+- [ ] PDF report generation with plots
+- [ ] Save/load system configurations
+- [ ] Multiple pipe diameter comparison view
+- [ ] Pump efficiency calculations
+- [ ] Power requirement analysis
+- [ ] NPSH (Net Positive Suction Head) evaluation
+
+### Phase 3: Advanced Analysis 🔮 FUTURE
+- [ ] Multiple pump configurations (series/parallel)
 - [ ] Pipe network solver (Hardy-Cross method)
-- [ ] Heat transfer integration
+- [ ] Variable speed pump analysis
+- [ ] System optimization algorithms
+- [ ] Cavitation risk assessment
+- [ ] Cost analysis integration
 
-### Phase 3: Enhanced Visualization 📋
-- [ ] 3D flow field visualization
-- [ ] Animation capabilities
-- [ ] CFD result import and display
-- [ ] Interactive mesh visualization
+### Phase 4: UI/UX Improvements 🎨 FUTURE
+- [ ] Light theme option
+- [ ] Customizable plot colors
+- [ ] 3D visualization of results
+- [ ] Animation of operating point changes
+- [ ] Responsive window resizing
+- [ ] Keyboard shortcuts
+- [ ] User preferences storage
 
-### Phase 4: Professional Features 📋
-- [ ] Database integration for project management
-- [ ] Multi-user collaboration
-- [ ] Cloud deployment
-- [ ] API for external applications
-- [ ] Mobile-responsive interface
-
-### Phase 5: Advanced Simulations 🔮
-- [ ] Transient flow analysis
+### Phase 5: Educational Features 📚 FUTURE
+- [ ] Interactive tutorials
+- [ ] Step-by-step calculation display
+- [ ] Example problems library
+- [ ] Theory explanations in-app
+- [ ] Video demonstrations
+- [ ] Quiz/assessment module
 - [ ] Compressible flow solvers
 - [ ] Multiphase flow modeling
 - [ ] Turbulence model implementation (k-ε, k-ω)

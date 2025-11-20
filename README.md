@@ -13,6 +13,12 @@
 
 ## 📸 Application Preview
 
+### Calculation Reference
+![Calculation Reference](calculos.jpg)
+*Reference calculations for pump system analysis based on Universidad Militar Nueva Granada coursework*
+
+### Application Interface
+
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
 │  🌊 Pump System Analysis - Fluid Mechanics Suite                          │
